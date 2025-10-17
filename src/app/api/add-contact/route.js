@@ -6,8 +6,11 @@ export async function POST(req) {
   const { name, email, phone } = await req.json()
 
   try {
-    // Get valid access token (will refresh if needed, no re-auth required)
+    // Get valid access token (will refresh if needed and store in database)
+    // This ensures only one document exists for userID = 'default_user'
+    console.log('Getting valid access token for default_user...')
     const accessToken = await getValidAccessToken('default_user')
+    console.log('Access token obtained successfully')
 
     // First, ensure the "savvy" label exists
     let savvyGroupId = 'savvy'

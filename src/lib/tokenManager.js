@@ -16,7 +16,7 @@ export async function getValidAccessToken(userId = 'default_user') {
     
     // Find token for user
     let tokenDoc = await Token.findOne({ userId });
-      console.log(tokenDoc);
+      
     if (!tokenDoc) {
       throw new Error('No tokens found. Please authenticate first.');
     }
